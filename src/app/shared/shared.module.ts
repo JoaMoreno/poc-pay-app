@@ -9,6 +9,7 @@ import { ViewBoxComponent } from './view-box/view-box.component';
   declarations: [CheckboxComponent, ViewBoxComponent],
   imports: [
     CommonModule
-  ]
+  ],
+  exports:[CheckboxComponent, ViewBoxComponent]
 })
 export class SharedModule { }
