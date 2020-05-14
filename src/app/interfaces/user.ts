@@ -1,18 +1,19 @@
+interface debtsI {
+  name: string;
+  description: {
+    referenceNumber: number;
+    mail: string;
+    billingMonth: string;
+  };
+}
+interface CardsI {
+  name: string;
+  number: number;
+  headline: string;
+  expiration: string;
+}
 export interface User {
-    username: string;
-    debts:[{
-        name: string;
-        description:{
-            referenceNumber:number;
-            mail:string;
-            billingMonth: string;
-        }
-    }],
-    creditCards:[{
-        name: string;
-        number: number;
-        headline: string;
-        expiration: string;
-    }
-    ]
+  username: string;
+  debts: Array<debtsI>;
+  creditCards: Array<CardsI>;
 }
