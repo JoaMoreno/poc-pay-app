@@ -7,9 +7,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentComponent implements OnInit {
 
+  dataCard={
+    title:"Hello",
+    button:"Next"
+  }
+
+  repeticiones=[{name:"hola"},{name:"hola"},{name:"hola"}]
+
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  msg(obj, event){
+    console.log("[Container]"+obj, event);
   }
 
 }

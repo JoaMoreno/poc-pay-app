@@ -1,1 +1,9 @@
-<p>card works!</p>
+<div class="card__ card mx-auto my-5">
+    <h4 class="my-5 text-center">{{dataCard.title}}</h4>
+    <div class="m-3">
+        <ng-content></ng-content>
+    </div>
+    <div class="card__ button-container my-5 d-flex justify-content-center">
+        <button (click)="emitAction()" class="btn btn-block btn-info col-6">{{dataCard.button}}</button>
+    </div>
+</div>
