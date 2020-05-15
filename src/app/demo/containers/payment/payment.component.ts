@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { User } from 'src/app/interfaces/user';
 
 @Component({
@@ -7,6 +7,8 @@ import { User } from 'src/app/interfaces/user';
   styleUrls: ['./payment.component.scss']
 })
 export class PaymentComponent implements OnInit {
+
+  @Output() emitStatus = new EventEmitter();
 
   user: User = {
     username: "Victor Robles",
@@ -24,24 +26,33 @@ export class PaymentComponent implements OnInit {
     },
     ],
     debts:[
-      {name: "Netflix",
-      description: {
-        referenceNumber: 3541512321,
-        billingMonth: "13/06/2020",
-        mail:"victorroblex@udemy.com"
-      }},
-      {name: "Spotify",
-      description: {
-        referenceNumber: 4152634152,
-        billingMonth: "13/06/2020",
-        mail:"victorroblex@udemy.com"
-      }},
-      {name: "Mercado Libre",
-      description: {
-        referenceNumber: 4758695241,
-        billingMonth: "13/06/2020",
-        mail:"victorroblex@udemy.com"
-      }},
+      {
+        name: "Netflix",
+        description: {
+          referenceNumber: 3541512321,
+          billingMonth: "13/06/2020",
+          mail:"victorroblex@udemy.com"
+        },
+        amount: 764
+      },
+      {
+        name: "Spotify",
+        description: {
+          referenceNumber: 4152634152,
+          billingMonth: "13/06/2020",
+          mail:"victorroblex@udemy.com"
+        },
+        amount: 345
+      },
+      {
+        name: "MercadoLibre",
+        description: {
+          referenceNumber: 4758695241,
+          billingMonth: "13/06/2020",
+          mail:"victorroblex@udemy.com"
+        },
+        amount: 985
+      }
     ]
   }
 
@@ -95,6 +106,10 @@ export class PaymentComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  emitSelect2(event){
+    this.emitStatus.emit(event)
   }
 
 }

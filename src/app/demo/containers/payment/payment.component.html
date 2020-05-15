@@ -1,3 +1,7 @@
 <app-card [dataCard]="dataCard" (emitButton)="changeStateCard($event)">
-    <app-view-box></app-view-box>
+     <div >
+        <app-view-box *ngFor="let data of user.debts" [data]="data">
+            <app-checkbox (emitSelect)="emitSelect2($event)"></app-checkbox>
+        </app-view-box>
+    </div>
 </app-card>

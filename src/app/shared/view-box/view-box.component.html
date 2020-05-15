@@ -1,1 +1,20 @@
-<p>view-box works!</p>
+<div class="card d-flex">
+    <ng-content select="app-checkbox"></ng-content>
+    <div class="card-header">
+        <a class=" btn btn-block" data-toggle="collapse" href="#{{data.name}}" role="button"
+            aria-expanded="false" aria-controls="accordion">
+            {{data.name}}
+        </a>
+        <p style="text-align: right;">${{data.amount}}</p>
+    </div>
+    <div class="collapse" id="{{data.name}}" data-parent="#accordion">
+        <div class="card-body">
+            <!-- <p><b>Número de referencia: </b></p>
+            <p>{{data.description.referenceNumber}}</p>
+            <p><b>Mes de facturación: </b></p>
+            <p>{{data.description.billingMonth}}</p>
+            <p><b>Correo: </b></p>
+            <p>{{data.description.mail}}</p> -->
+        </div>
+    </div>
+</div>
