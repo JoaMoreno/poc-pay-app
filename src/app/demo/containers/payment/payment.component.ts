@@ -57,19 +57,55 @@ export class PaymentComponent implements OnInit {
   }
 
   dataCard={
-    title:"Hello",
-    button:"Next"
-  }
+    title:"",
+    button:"",
+    buttonAction:"",
+    buttonBackShow: false,
+    buttonBackAction:""
+  };
 
   repeticiones=[{name:"hola"},{name:"hola"},{name:"hola"}]
 
   constructor() { }
 
   ngOnInit(): void {
+    this.setCard(`Hello ${this.user.username}!`, 'Next','[step-2]');
+    this.setCardButtonBack(false)
   }
 
-  msg(obj, event){
-    console.log("[Container]"+obj, event);
+  setCard(title:string, buttonText:string, buttonAction){
+    this.dataCard.title = title;
+    this.dataCard.button = buttonText;
+    this.dataCard.buttonAction = buttonAction;
+  }
+
+  setCardButtonBack(buttonBackShow: boolean,buttonBackAction?){
+    this.dataCard.buttonBackShow = buttonBackShow;
+    this.dataCard.buttonBackAction = buttonBackAction;
+  }
+
+  msg(event){
+    console.log("[Container]"+event);
+  }
+
+  changeStateCard(event):void{
+    this.msg(event)
+    switch (event) {
+      case '[step-1]':
+        this.setCard(`Hello ${this.user.username}!`, 'Next','[step-2]');
+        this.setCardButtonBack(false)
+        break;
+      case '[step-2]':
+        this.setCard('Select a payment method', 'Next','[step-3]');
+        this.setCardButtonBack(true,'[step-1]')
+        break;
+      case '[step-3]':
+        this.setCard('Summary', 'Next','[pay]');
+        this.setCardButtonBack(true,'[step-2]')
+        break;
+      default:
+        break;
+    }
   }
 
   emitSelect2(event){
