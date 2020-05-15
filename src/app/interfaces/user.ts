@@ -5,6 +5,7 @@ interface debtsI {
     mail: string;
     billingMonth: string;
   };
+  amount: number;
 }
 interface CardsI {
   name: string;

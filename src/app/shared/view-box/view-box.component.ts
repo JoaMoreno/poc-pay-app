@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view-box',
@@ -7,9 +7,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewBoxComponent implements OnInit {
 
+  @Input() data: Array<any>
+  @Output() emitStatus = new EventEmitter();
+
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.data)
+  }
+  
+  emitSelect2(event){
+    this.emitStatus.emit(event)
   }
 
 }
